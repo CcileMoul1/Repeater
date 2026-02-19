@@ -6,6 +6,7 @@ For now, some elements are written directly in the code so I can use it as soon 
 Dependencies :
 - pandas
 - random
+- difflib
 """
 
 import pandas
@@ -21,20 +22,22 @@ header = df_unclear.columns.values.tolist()
 n_header = len(header)
 liste = list(range(n_header))
 
-print("When you're wrong, do you want me to show the differences off ? (Type Y for yes, everything else for no)")
+print("When you're wrong, do you want me to highlight the differences ? (Type Y for yes, everything else for no)")
 answer = input()
 print_diff = answer=="Y"
 
-# Clear the file from non breakable spaces (\xa0)
+# Clear the file from non breakable spaces (\xa0) and quotation mark \u20019
 df = df_unclear.replace(["\xa0", "\\u2019"],[" ", "'"], regex = True)
 
 while not stop:
-	for i in range(nb_wps): # one session starts
-		r = random.randint(0,n-1) # which row will be selected
+	selected_rows = random.sample(range(n),nb_wps)
+	i = 0
+	for r in selected_rows: # one session starts
+		i = i+1
 		c = random.randint(0,n_header-1) # which column will be selected
 		others = [x for x in liste if x!=c] # not selected columns
 		for o in others:
-			print("(" + str(i+1) + ") What is the " + header[o] + " for " + df.iat[r,c] + "?")
+			print("(" + str(i) + ") What is the " + header[o] + " for " + df.iat[r,c] + "?")
 			answer = input()
 			good = df.iat[r,o]
 			if answer == good :
