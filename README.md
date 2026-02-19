@@ -27,17 +27,20 @@ The following libraries are used
 ## Currently
 
 Reads a csv file, randomly selects a row and a column and asks the user to complete every other elements of the row. For every given answer, tells if it is correct or wrong. Repeats this 20 times before asking to stop or continue.
+At the start, it is possible to ask the program to highlight the differences when the answer is wrong.
+For each session (for now, 20 questions), the questions are unique. 
 
 ## Future
 This list is not ordered.
-- Highlighting the differences between the given answer and the solution
-- No repeated questions in one session
+- ~~Highlighting the differences between the given answer and the solution~~
+- ~~No repeated questions in one session~~
 - Known-score and selection of rows based on this score (no saving)
 - (with saving)
 - Time without asking reduce the score
 - option to be more flexible about wrong answers
 - inputs not written in the code
-- GUI 
+- GUI
+- optional overview at the end
 
 # Comment
 Any advice on how to improve this readme or the programm (code or features) is welcomed
